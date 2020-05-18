@@ -17,14 +17,18 @@ They predict coronavirus may hospitalize 4.3% of the nationwide homeless populat
 
 This document shows how I combined multiple datasets and then narrowed down 3,142 counties to see which might have the biggest problem protecting people experiencing homelessness. The 42 counties selected are most likely, considering they possess all the following variables:  
 
-* High rates of homelessness per capita (according to CoC population totals imputed using an R program [supplied by a Boston University researcher](https://github.com/tomhbyrne/HUD-CoC-Geography-Crosswalk));
+* High rates of homelessness per capita (according to CoC population totals computed using an R program [supplied by a Boston University researcher](https://github.com/tomhbyrne/HUD-CoC-Geography-Crosswalk));
 * High rates of poverty using county-level data poverty data from the [2014-2018 American Community Survey](https://www.census.gov/programs-surveys/acs/); 
 * Low rate of primary care physicians (MDs/DOs) to residents (according to the [2020 County Health Rankings](https://www.countyhealthrankings.org/explore-health-rankings/rankings-data-documentation)); and
 * Large number of additional shelter beds needed to accommodate social distancing (from the [UPenn study](https://www.sp2.upenn.edu/the-impact-of-covid-19-on-homelessness/))
 
 Many of them overlap with the top cities where the UPenn team anticipated the homeless would be most impacted, but this really helps us narrow down specific counties in those large "balance of state" continuums of care (e.g., Texas has 216 counties in its Balance of State CoC; Indiana has 91, etc.).  
 
-I used Jenks natural break classification to establish the thresholds to filter the data.
+I used Jenks natural break and quantile classification to establish the thresholds to filter the data.
+
+**<a href="https://asu.maps.arcgis.com/apps/MapSeries/index.html?appid=c682e07e717c4317a549ef44fd2b7e0f" target="_blank">Review the ArcGIS map here</a> for full details.** 
+![](map.png)
+
 ```{r include=FALSE}
 knitr::include_graphics
 knitr::opts_chunk$set(warning = FALSE, message = FALSE)
@@ -429,10 +433,11 @@ ggplot (data = county_beds,
 ## Determining counties of highest concern
 
 Now that we've established thresholds, we can filter our data for counties that match in all four varibles. 
-  * CoC-derived homeless rate >= 0.16% of total population
-  * County poverty rate >= 10.90% of total population
-  * Doctors per 100,000 residents <= 79
-  * Additional shelter beds needed >=384
+
+* CoC-derived homeless rate >= 0.16% of total population
+* County poverty rate >= 10.90% of total population
+* Doctors per 100,000 residents <= 79
+* Additional shelter beds needed >=384
 
 The resulting data set contains 42 counties of highest concern. Visit the [ArcGIS map here](https://arcg.is/0Lfm1q) to visualize where they fall on the map. 
 
