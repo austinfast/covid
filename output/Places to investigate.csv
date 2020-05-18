@@ -1,0 +1,48 @@
+"","county_fips","state","county","coc_number","coc_name","coc_category","est_coc_homeless_2019","primary_care_physicians_rate","pct_in_poverty_in_cnty","total_new_shelter_beds_required_in_coc","upenn_additional_bed_capacity_needed_in_cnty","county_pop_2018","coc_pop_2019"
+"1","04013","Arizona","Maricopa","AZ-502","Phoenix, Mesa/Maricopa County","Major City CoC",0.187631312661963,70,14.7317845129714,5322,5322,4198378,4258868
+"2","04021","Arizona","Pinal","AZ-502","Phoenix, Mesa/Maricopa County","Major City CoC",0.187631312661963,16,14.2388478205455,5322,465,392300,4258868
+"3","06007","California","Butte","CA-519","Chico, Paradise/Butte County","Largely Rural CoC",0.679964929605573,61,20.0734958438236,1296,1297,221237,227075
+"4","06019","California","Fresno","CA-514","Fresno City & County/Madera County","Major City CoC",0.277124660485818,67,24.1279033498991,3003,2068,961820,1133143
+"5","06023","California","Humboldt","CA-522","Humboldt County","Largely Rural CoC",1.67713393767975,69,20.3475162851083,2057,2058,132483,134391
+"6","06025","California","Imperial","CA-613","Imperial County","Largely Suburban CoC",1.00145792420435,24,24.1664564351382,1763,1763,170447,180216
+"7","06029","California","Kern","CA-604","Bakersfield/Kern County","Other Largely Urban CoC",0.194214399510028,49,21.9800757431682,1301,1301,851826,883053
+"8","06031","California","Kings","CA-513","Visalia/Kings, Tulare Counties","Other Largely Urban CoC",0.219651294490737,40,20.8256397707133,1179,644,134853,610552
+"9","06037","California","Los Angeles","CA-600","Los Angeles City & County","Major City CoC",0.757773910966608,73,15.982992820824,62884,62884,9947799,9250051
+"10","06037","California","Los Angeles","CA-606","Long Beach","Major City CoC",0.513837091109538,73,15.982992820824,2020,2020,9947799,453495
+"11","06037","California","Los Angeles","CA-607","Pasadena","Other Largely Urban CoC",0.496135136163728,73,15.982992820824,521,521,9947799,138560
+"12","06039","California","Madera","CA-514","Fresno City & County/Madera County","Major City CoC",0.277124660485818,44,20.841747625805,3003,936,146576,1133143
+"13","06047","California","Merced","CA-520","Merced City & County","Largely Suburban CoC",0.291297648091958,44,22.6868259738679,475,475,262972,269075
+"14","06053","California","Monterey","CA-506","Salinas/Monterey, San Benito Counties","Largely Rural CoC",0.704002233965262,60,14.1102687006312,2968,2181,416002,490898
+"15","06073","California","San Diego","CA-601","San Diego City and County","Major City CoC",0.30726619140226,80,12.515609978839,7446,7447,3221497,3285592
+"16","06077","California","San Joaquin","CA-511","Stockton/San Joaquin County","Other Largely Urban CoC",0.384599077290193,58,15.9192712685944,2458,2458,717960,732212
+"17","06083","California","Santa Barbara","CA-603","Santa Maria/Santa Barbara County","Largely Suburban CoC",0.528270306051523,76,14.8429954535818,1758,1758,424510,443738
+"18","06089","California","Shasta","CA-516","Redding/Shasta, Siskiyou, Lassen, Plumas, Del Norte, Modoc, Sierra Counties","Largely Rural CoC",0.523301076942142,72,17.1318630177414,1309,621,176198,301164
+"19","06099","California","Stanislaus","CA-510","Turlock, Modesto/Stanislaus County","Largely Suburban CoC",0.442505415772831,66,16.110168952182,1772,1773,534234,539301
+"20","06101","California","Sutter","CA-524","Yuba City & County/Sutter County","Largely Suburban CoC",0.479591052868855,76,16.0230091297694,779,453,94745,171365
+"21","06107","California","Tulare","CA-513","Visalia/Kings, Tulare Counties","Other Largely Urban CoC",0.219651294490737,42,25.4562003675986,1179,535,454844,610552
+"22","08041","Colorado","El Paso","CO-504","Colorado Springs/El Paso County","Major City CoC",0.271044770566274,60,10.9108857578749,980,981,668580,688153
+"23","12009","Florida","Brevard","FL-513","Palm Bay, Melbourne/Brevard County","Largely Suburban CoC",0.177570332591494,73,12.719660575191,670,671,570141,516138
+"24","12011","Florida","Broward","FL-601","Ft Lauderdale/Broward County","Largely Suburban CoC",0.167144944629629,73,13.4875152201853,2383,2383,1892224,1900426
+"25","12061","Florida","Indian River","FL-509","Fort Pierce/St. Lucie, Indian River, Martin Counties","Largely Suburban CoC",0.348292339806434,62,12.1559755836368,1908,520,149408,597174
+"26","12087","Florida","Monroe","FL-604","Monroe County","Largely Rural CoC",2.48289322647857,77,11.828272978641,426,426,74863,26234
+"27","12101","Florida","Pasco","FL-519","Pasco County","Largely Suburban CoC",0.22461540307828,59,13.4502760945711,1000,1000,502183,507809
+"28","12111","Florida","St. Lucie","FL-509","Fort Pierce/St. Lucie, Indian River, Martin Counties","Largely Suburban CoC",0.348292339806434,38,15.0382597433491,1908,938,302668,597174
+"29","12127","Florida","Volusia","FL-504","Deltona, Daytona Beach/Volusia, Flagler Counties","Largely Suburban CoC",0.180709883322285,69,15.2034695592539,754,508,517645,624114
+"30","15001","Hawaii","Hawaii","HI-500","Hawaii Balance of State","Largely Rural CoC",0.583225161015857,79,16.613899653588,1857,439,194566,427855
+"31","18097","Indiana","Marion","IN-503","Indianapolis","Major City CoC",0.181628669870316,80,18.9511526555177,663,663,925168,944523
+"32","26163","Michigan","Wayne","MI-501","Detroit","Major City CoC",0.318326050779535,70,23.051453454796,762,818,1740233,677155
+"33","32003","Nevada","Clark","NV-500","Las Vegas/Clark County","Major City CoC",0.295267075454399,55,14.1489797916309,5582,5582,2114421,2141574
+"34","32031","Nevada","Washoe","NV-501","Reno, Sparks/Washoe County","Other Largely Urban CoC",0.318568255565749,74,12.1700586587347,753,754,445117,450486
+"35","36005","New York","Bronx","NY-600","New York City","Major City CoC",1.01314914815586,57,29.0513099993085,20953,4419,1402787,8240773
+"36","36047","New York","Kings","NY-600","New York City","Major City CoC",1.01314914815586,64,21.1409109400377,20953,4739,2576152,8240773
+"37","36081","New York","Queens","NY-600","New York City","Major City CoC",1.01314914815586,62,12.9900450656621,20953,2296,2272240,8240773
+"38","40027","Oklahoma","Cleveland","OK-502","Oklahoma City","Major City CoC",0.22554283857323,50,12.488888720775,883,445,264371,637963
+"39","40027","Oklahoma","Cleveland","OK-504","Norman/Cleveland County","Largely Suburban CoC",0.218855290274405,50,12.488888720775,343,445,264371,203692
+"40","41009","Oregon","Columbia","OR-505","Oregon Balance of State","Largely Rural CoC",0.626980676028341,33,12.1148959822138,7704,509,50376,1481542
+"41","41047","Oregon","Marion","OR-505","Oregon Balance of State","Largely Rural CoC",0.626980676028341,69,15.1635926616305,7704,1879,326176,1481542
+"42","41053","Oregon","Polk","OR-505","Oregon Balance of State","Largely Rural CoC",0.626980676028341,57,14.1037089207783,7704,720,79511,1481542
+"43","41071","Oregon","Yamhill","OR-505","Oregon Balance of State","Largely Rural CoC",0.626980676028341,65,13.6639235573371,7704,981,98793,1481542
+"44","42101","Pennsylvania","Philadelphia","PA-500","Philadelphia","Major City CoC",0.396934781458374,69,24.8586143587113,2628,2628,1532157,1575522
+"45","48029","Texas","Bexar","TX-500","San Antonio/Bexar County","Major City CoC",0.17729885600376,74,16.2579951722476,2105,2105,1892392,1953952
+"46","53053","Washington","Pierce","WA-500","Seattle/King County","Major City CoC",0.599346673392356,73,11.1648638687053,9089,1166,843781,2157733
+"47","53053","Washington","Pierce","WA-503","Tacoma, Lakewood/Pierce County","Largely Suburban CoC",0.191386988301905,73,11.1648638687053,1140,1166,843781,832862
