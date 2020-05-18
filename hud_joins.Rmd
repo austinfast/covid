@@ -337,7 +337,7 @@ classify(county_doctors$primary_care_physicians_rate, method = "quantile", break
 # 0 28 42 56 79 514
 ```
 
-```{r}
+```{r homelessness rate, echo=FALSE}
 #Homelessness rate histogram
 ggplot (data = coc_df_3, 
         aes(est_homeless_2019_scal)) +
@@ -356,7 +356,7 @@ ggplot (data = coc_df_3,
   labs(caption = "*Vertical lines represent Jenks Natural Breaks classification")
 ```
 
-```{r}
+```{r poverty rate, echo=FALSE}
 #Poverty rate histogram
 ggplot (data = county_poverty, 
         aes(pct_in_poverty_in_cnty)) +
@@ -375,7 +375,7 @@ ggplot (data = county_poverty,
   labs(caption = "*Vertical lines represent Jenks Natural Breaks classification")
 ```
 
-```{r}
+```{r doctor rate, echo=FALSE}
 #Doctor rate histogram
 ggplot (data = county_doctors, 
         aes(primary_care_physicians_rate)) +
@@ -394,7 +394,7 @@ ggplot (data = county_doctors,
   labs(caption = "*Vertical lines represent quantile classification")
 ```
 
-```{r}
+```{r bed rate 1, echo=FALSE}
 #Shelter beds rate histogram
 ggplot (data = county_beds, 
         aes(additional_bed_capacity_needed)) +
@@ -410,7 +410,7 @@ ggplot (data = county_beds,
        caption = "*presented in two charts because of extreme outliers.")
 ```
 
-```{r}
+```{r bed rate 2, echo=FALSE}
 #Shelter beds rate histogram
 ggplot (data = county_beds, 
         aes(additional_bed_capacity_needed)) +
