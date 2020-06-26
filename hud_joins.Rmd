@@ -11,20 +11,22 @@ output:
 ---
 ## Readme
 
-A team of researchers at the University of Pennsylvania, Boston University and UCLA [produced a report in early April](https://www.sp2.upenn.edu/the-impact-of-covid-19-on-homelessness/) predicting the coronavirus pandemic could kill more than 3,400 people experiencing homelessness across the country.
+The Howard Center combined four datasets to determine which counties nationwide might have the biggest problem protecting people experiencing homelessness. These 42 counties of highest concern represent 14 states from Hawaii to New York, and include 10 rural counties, 13 suburban counties, 6 urban counties, and 18 of the 50 largest cities in the country. The selected counties possess all the following characteristics:
 
-They predict coronavirus may hospitalize 4.3% of the nationwide homeless population (21,295 people), with nearly 7,200 of them requiring critical care.
+* High rates of homelessness per capita (according to 2019 CoC population totals computed using an R program [written by a Boston University researcher](https://github.com/tomhbyrne/HUD-CoC-Geography-Crosswalk));
+* High rates of poverty (according to county-level data poverty data from the [2014-2018 American Community Survey](https://www.census.gov/programs-surveys/acs/));
+* Low rate of [primary care physicians](https://www.countyhealthrankings.org/explore-health-rankings/measures-data-sources/county-health-rankings-model/health-factors/clinical-care/access-to-care/primary-care-physicians) (MDs/DOs) to residents (according to the [2020 County Health Rankings](https://www.countyhealthrankings.org/explore-health-rankings/rankings-data-documentation)); and
+* Large number of additional shelter beds needed to accommodate social distancing, as calculated by an April 2020 [University of Pennsylvania/UCLA/Boston University study](https://www.sp2.upenn.edu/the-impact-of-covid-19-on-homelessness/) produced to estimate funding needs for the CARES Act. These researchers predict COVID-19 may hospitalize 4.3% of the nationwide homeless population (21,295 people), with nearly 7,200 of them requiring critical care.
 
-This document shows how I combined multiple datasets and then narrowed down 3,142 counties to see which might have the biggest problem protecting people experiencing homelessness. The 42 counties selected are most likely, considering they possess all the following variables:  
+Each variable was classified to establish thresholds and select the counties that fall into the risk zones for all four variables. The homeless rate, poverty rate and additional shelter beds were all classified with the [Jenks natural breaks algorithm](https://rdrr.io/github/smh-ej/XploreR/man/mutate_jenks_brks.html), which created five classes based on natural groupings inherent in the data. The break between the first and second classes became the threshold for each variable. The doctors per 100,000 residents rate is measured inversely from the other three variables (higher is better), so the Jenks method was producing unhelpful results. Therefore, we used quantile classification for that variable.
 
-* High rates of homelessness per capita (according to CoC population totals computed using an R program [supplied by a Boston University researcher](https://github.com/tomhbyrne/HUD-CoC-Geography-Crosswalk));
-* High rates of poverty using county-level data poverty data from the [2014-2018 American Community Survey](https://www.census.gov/programs-surveys/acs/); 
-* Low rate of primary care physicians (MDs/DOs) to residents (according to the [2020 County Health Rankings](https://www.countyhealthrankings.org/explore-health-rankings/rankings-data-documentation)); and
-* Large number of additional shelter beds needed to accommodate social distancing (from the [UPenn study](https://www.sp2.upenn.edu/the-impact-of-covid-19-on-homelessness/))
+Even though 42 counties rose to the top, the attached spreadsheet "Places to investigate" contains 47 results because of how CoCs and county lines don’t always match up. For example, Phoenix’s CoC stretches into Pinal County, Arizona. Only the area of Pinal County within Phoenix’s CoC is of concern. Same for Washington’s Pierce County CoC, which contains a tiny amount of King County, perhaps due to an artifact from the R program that matched Census tracts to CoCs. Los Angeles County contains four CoCs, three of which land on this list, and Cleveland County, Oklahoma, contains two separate CoCs.
 
-Many of them overlap with the top cities where the UPenn team anticipated the homeless would be most impacted, but this really helps us narrow down specific counties in those large "balance of state" continuums of care (e.g., Texas has 216 counties in its Balance of State CoC; Indiana has 91, etc.).  
+We wanted to keep tabs on which of our 42 counties have seen spikes in Covid-19 cases, so the Howard Center turned to datasets updated daily by Johns Hopkins University and Carnegie Mellon University. The Centers for Disease Control assemble case and death data from state and local jurisdictions, but [inconsistent data collection procedures across the country have likely resulted in an undercount](https://www.washingtonpost.com/investigations/cdc-wants-states-to-count-probable-coronavirus-cases-and-deaths-but-most-arent-doing-it/2020/06/07/4aac9a58-9d0a-11ea-b60c-3be060a4f8e1_story.html) of Covid-19's true impact. The CDC tallies cumulative counts as opposed to calculating new cases per day, while the researchers at Johns Hopkins release daily incidence rates, included here. Some dates contain negative figures because of subsequent corrections downward.
 
-I used Jenks natural break and quantile classification to establish the thresholds to filter the data.
+Carnegie Mellon recognized the aforementioned inconsistent reporting and devised its own ["COVIDcast" mapping tool](https://covidcast.cmu.edu/?sensor=indicator-combination-nmf_day_doc_fbc_fbs_ght&level=county&region=42003&date=20200611&signalType=value) to create a tracking system they believe is more illustrative of where Covid-19 has greatest impact nationwide. Carnegie Mellon's researchers factor in the percentage of COVID-related outpatient visits with Facebook surveys and Google search trends to create an index of how affected a particular county is by Covid-19 each day. The scale itself is arbitrary, but higher numbers indicate more affected counties. 
+
+Keeping an eye on the day-to-day fluctuations in these three data sources ([CDC](https://public.flourish.studio/visualisation/2895339/), [Johns Hopkins](https://public.flourish.studio/visualisation/2701246/), [Carnegie Mellon](https://public.flourish.studio/visualisation/2701137/)) will help the Howard Center identify Covid-19's effect in these 42 counties and where to focus our reporting efforts throughout this investigation. 
 
 **<a href="https://asu.maps.arcgis.com/apps/MapSeries/index.html?appid=c682e07e717c4317a549ef44fd2b7e0f" target="_blank">Review the ArcGIS map here</a> for full details.** 
 ![](map.png)
@@ -45,7 +47,7 @@ library(sf)
 library(ggplot2)
 library(berryFunctions)
 
-census_api_key("a270041de8c83fd7f8e23dcd703d0ad06ee90804")
+census_api_key("a270041de8c83fd7f8e23dcd703d0ad06ee90804", install = TRUE, overwrite = TRUE)
 
 #Defining Jenks breaks function
 mutate_jenks_brks <- function(input, variable, ...) {
