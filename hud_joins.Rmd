@@ -1,7 +1,7 @@
 ---
-title: "HUD joins"
+title: "COVID's Invisible Victims methodology"
 author: "Austin Fast"
-date: "5/17/2020"
+date: "8/24/2020"
 output: 
   html_document:
     toc: true
@@ -9,28 +9,43 @@ output:
     toc_float: true
     theme: united
 ---
-## Readme
+## Overview
 
-The Howard Center combined four datasets to determine which counties nationwide might have the biggest problem protecting people experiencing homelessness. These 43 counties of highest concern represent 14 states from Hawaii to New York, and include 10 rural counties, 13 suburban counties, 6 urban counties, and 18 of the 50 largest cities in the country. The selected counties possess all the following characteristics:
+![](header.png)
 
-* High rates of homelessness per capita (according to 2019 CoC population totals computed using an R program [written by a Boston University researcher](https://github.com/tomhbyrne/HUD-CoC-Geography-Crosswalk));
+The Howard Center for Investigative Journalism at Arizona State University produced a multimedia investigation entitled [COVID's Invisible Victims](https://cronkitenews.azpbs.org/howardcenter/covid-homeless/) in summer 2020 to discover how COVID-19 has affected a particularly vulnerable population of Americans: homeless people. The resulting multipart series was published by over 180 newspapers, TV and radio stations and online news outlets as the [Associated Press](https://apnews.com/f7e3f353c081cd6b093ec47f852e67dd) and [USA Today](https://www.usatoday.com/story/news/investigations/2020/08/28/covid-19-invisible-victims-homeless-people/5636938002/) picked up our coverage.
+
+To create an empirical spine for this investigation, I combined four datasets to determine which areas of the United States might have the most difficulty protecting homeless people during the pandemic. The analysis resulted in 43 counties of highest concern that represent 14 states from Hawaii to New York, and include 10 rural counties, 13 suburban counties, 6 urban counties, and 18 of the 50 largest cities in the country. 
+
+The selected counties possess all the following characteristics:
+
+* High rates of homelessness per capita (according to 2019 Continuum of Care [CoC] population totals imputed using an R program [written by a Boston University researcher](https://github.com/tomhbyrne/HUD-CoC-Geography-Crosswalk));
 * High rates of poverty (according to county-level data poverty data from the [2014-2018 American Community Survey](https://www.census.gov/programs-surveys/acs/));
 * Low rate of [primary care physicians](https://www.countyhealthrankings.org/explore-health-rankings/measures-data-sources/county-health-rankings-model/health-factors/clinical-care/access-to-care/primary-care-physicians) (MDs/DOs) to residents (according to the [2020 County Health Rankings](https://www.countyhealthrankings.org/explore-health-rankings/rankings-data-documentation)); and
-* Large number of additional shelter beds needed to accommodate social distancing, as calculated by an April 2020 [University of Pennsylvania/UCLA/Boston University study](https://www.sp2.upenn.edu/the-impact-of-covid-19-on-homelessness/) produced to estimate funding needs for the CARES Act. These researchers predict COVID-19 may hospitalize 4.3% of the nationwide homeless population (21,295 people), with nearly 7,200 of them requiring critical care.
+* Large number of additional shelter beds needed to accommodate social distancing, as calculated by an [April 2020 study](https://www.sp2.upenn.edu/the-impact-of-covid-19-on-homelessness/) produced by researchers at the University of Pennsylvania, UCLA, and Boston University to estimate funding needs for the CARES Act. These scholars predicted COVID-19 may hospitalize 4.3% of the national homeless population (21,295 people), with nearly 7,200 of them requiring critical care.
 
-These four variables were selected after consultation with sociologists, demographers and epidemiologists at the U.S. Centers for Disease Control, the University of Pennsylvania, Boston University, the Models of Infection Disease Agent Study (MIDAS) Coordination Center at the University of Pittsburgh, Carnegie Mellon, and Northern Arizona University's Center for Health Equity Research.
+I selected these four datasets after consultation with sociologists, demographers and epidemiologists at the U.S. Centers for Disease Control, the University of Pennsylvania, Boston University, the Models of Infection Disease Agent Study (MIDAS) Coordination Center at the University of Pittsburgh, Carnegie Mellon, and Northern Arizona University's Center for Health Equity Research.
 
-Each variable was classified to establish thresholds and select the counties that fall into the risk zones for all four variables. The homeless rate, poverty rate and additional shelter beds were all classified with the [Jenks natural breaks algorithm](https://rdrr.io/github/smh-ej/XploreR/man/mutate_jenks_brks.html), which created five classes based on natural groupings inherent in the data. The break between the first and second classes became the threshold for each variable. The doctors per 100,000 residents rate is measured inversely from the other three variables (higher is better), so the Jenks method was producing unhelpful results. Therefore, we used quantile classification for that variable.
+I then classified each variable to establish thresholds and filter out the counties that fall into the risk zones for all four variables. The homeless rate, poverty rate and additional shelter beds were all classified with the [Jenks natural breaks algorithm](https://rdrr.io/github/smh-ej/XploreR/man/mutate_jenks_brks.html), which created five classes based on natural groupings inherent in the data. The break between the first and second classes became the threshold for each variable. The doctors per 100,000 residents rate is measured inversely from the other three variables (higher is better), so the Jenks method was producing unhelpful results. Therefore, I used quantile classification for that variable.
+
+This classification enabled a vulnerability index for every county in the United States, ranging from 0 (not vulnerable for any of the four variables); 1 (vulnerable in any one variable); 2 (vulnerable for any two); 3 (vulnerable for any three) and 4 (vulnerable in all four). The counties fell largely along a normal distribution, with just 43 possessing a vulnerability index of 4.
 
 Even though 43 counties rose to the top, our list of "danger zones" to investigate contains 47 results because of how CoCs and county lines don’t always match up. For example, Phoenix’s CoC stretches into Pinal County, Arizona. Only the area of Pinal County within Phoenix’s CoC is of concern. Same for Washington’s Pierce County CoC, which contains a tiny amount of King County, perhaps due to an artifact from the R program that matched Census tracts to CoCs. Los Angeles County contains four CoCs, three of which land on this list, and Cleveland County, Oklahoma, contains two separate CoCs.
 
-We wanted to keep tabs on which of our 43 counties have seen spikes in Covid-19 cases, so the Howard Center turned to datasets updated daily by Johns Hopkins University and Carnegie Mellon University. The Centers for Disease Control assemble case and death data from state and local jurisdictions, but [inconsistent data collection procedures across the country have likely resulted in an undercount](https://www.washingtonpost.com/investigations/cdc-wants-states-to-count-probable-coronavirus-cases-and-deaths-but-most-arent-doing-it/2020/06/07/4aac9a58-9d0a-11ea-b60c-3be060a4f8e1_story.html) of Covid-19's true impact. The CDC tallies cumulative counts as opposed to calculating new cases per day, while the researchers at Johns Hopkins release daily incidence rates, included here. Some dates contain negative figures because of subsequent corrections downward.
+Our eight-member team of journalists within the Howard Center then filed public records requests to governmental entities in those 43 counties and their major cities, including public health and human services departments and governing councils, to see how they prepared for and reacted to the threat of COVID-19. Public records requests also were made to those counties’ Continuums of Care, which are regional or local planning bodies that coordinate homeless assistance. The requests sought documents containing keywords, such as “homeless” and “COVID-19,” created from Jan. 1 to June 1, 2020.
 
-Carnegie Mellon recognized the aforementioned inconsistent reporting and devised its own ["COVIDcast" mapping tool](https://covidcast.cmu.edu/?sensor=indicator-combination-nmf_day_doc_fbc_fbs_ght&level=county&region=42003&date=20200611&signalType=value) to create a tracking system they believe is more illustrative of where Covid-19 has greatest impact nationwide. Carnegie Mellon's researchers factor in the percentage of COVID-related outpatient visits with Facebook surveys and Google search trends to create an index of how affected a particular county is by Covid-19 each day. The scale itself is arbitrary, but higher numbers indicate more affected counties. 
+Some governmental entities insisted that requests be narrowed to fewer keywords or a tighter time frame before searching for responsive records. Many records were provided free of charge, though some counties, such as Brevard in Florida, requested more than $5,500 for their records – a sum the Howard Center could not afford.
 
-Keeping an eye on the day-to-day fluctuations in these three data sources ([CDC](https://public.flourish.studio/visualisation/2895339/), [Johns Hopkins](https://public.flourish.studio/visualisation/2701246/), [Carnegie Mellon](https://public.flourish.studio/visualisation/2701137/)) will help the Howard Center identify Covid-19's effect in these 43 counties and where to focus our reporting efforts throughout this investigation. 
+Of the 140 requests filed, 83 were partially or completely fulfilled, providing an inside look at how more than two dozen counties addressed the needs of their homeless populations in the pandemic.
 
-**<a href="https://asu.maps.arcgis.com/apps/MapSeries/index.html?appid=c682e07e717c4317a549ef44fd2b7e0f" target="_blank">Review the ArcGIS map here</a> for full details.** 
+To keep tabs on which of the 43 counties were experiencing spikes in COVID-19 cases and focus reporting efforts, I regularly scraped datasets updated daily by the CDC, Johns Hopkins University and Carnegie Mellon University. The CDC assembles cumulative case and death data from state and local jurisdictions with the assistance of its partner [USAFacts](https://usafacts.org/visualizations/coronavirus-covid-19-spread-map/), which I used to produce a [data visualization](https://public.flourish.studio/visualisation/2895339/) of how infection rates in our 43 counties of highest concern changed over the summer.
+
+I also tracked datasets from academic researchers to deepen our understanding of COVID’s reach across the 43 counties. The CDC does not calculate a daily rate of new cases in each county, which could better indicate a spike or drop than cumulative numbers. However, researchers at Johns Hopkins produce this from CDC data by subtracting the previous day’s count from the latest count.
+
+Carnegie Mellon researchers, noting inconsistencies in counting cases and deaths in various counties and states, devised their own ["COVIDcast" mapping tool](https://covidcast.cmu.edu/?sensor=indicator-combination-nmf_day_doc_fbc_fbs_ght&level=county&region=42003&date=20200611&signalType=value) to create a tracking system they believe is more illustrative of where COVID-19 has the greatest impact nationwide. The researchers factor in the percentage of COVID-related outpatient visits with Facebook surveys and Google search trends to create an index of how affected a particular county is by COVID-19 each day. Higher numbers indicate more-affected counties.
+
+**<a href="https://asu.maps.arcgis.com/apps/MapSeries/index.html?appid=c682e07e717c4317a549ef44fd2b7e0f" target="_blank">Review the ArcGIS map here</a> for full details on these four datasets.** 
+
 ![](map.png)
 
 ```{r include=FALSE}
@@ -93,13 +108,13 @@ mutate_jenks_brks <- function(input, variable, ...) {
 ```
 
 ## Loading CoC-level data
-The U.S. Department of Housing and Urban Development (HUD) does not maintain county-level counts of people experiencing homelessness to easily compare to our other county-level variables, so I updated Tom Byrne's R program that [creates a crosswalk table](https://github.com/tomhbyrne/HUD-CoC-Geography-Crosswalk) between CoCs and counties. His program was based on 2017 CoC boundaries, but I used the 2019 CoC shapefile and 2019 census tracts and counties to account for slight changes in the intervening two years.
+The U.S. Department of Housing and Urban Development (HUD) does not maintain county-level counts of people experiencing homelessness to easily compare to our other county-level variables, so I updated Tom Byrne's R program that [creates a crosswalk table](https://github.com/tomhbyrne/HUD-CoC-Geography-Crosswalk) between CoCs and counties. His program was based on 2017 CoC boundaries, but I used the 2019 CoC shapefile and 2019 census tracts and counties to account for minor changes in the intervening two years.
 
 CoCs can match to multiple counties, and a single county can match to each CoC. Thus, the crosswalk has one row for each unique county-CoC combination. Not all counties match to a CoC, as some regions aren't covered by HUD's CoC system.
 
-Essentially, this program applied the CoC homeless rate to each county within its borders, but this should be interpreted with care because counties belonging to geographically larger CoCs will appear worse than they likely are. Homelessness is likely concentrated in urban areas of those CoCs but applied equally to all counties by this model. The other county-level variables will weed out any false positives. 
+Essentially, this program applied the CoC homeless rate to each county within its borders, but this should be interpreted with care because some counties belonging to geographically larger CoCs will appear worse than they likely are. Homelessness is likely concentrated in urban areas of those CoCs but applied equally to all counties by this model. The three other county-level variables will weed out any false positives. 
 
-This program also created a count of each CoC's total population based on tract-level total population estimates from the U.S. Census Bureau's American Community Survey 2013-2018 5-Year Estimates.
+This program also created a count of each CoC's total population based on tract-level total population estimates from the U.S. Census Bureau's American Community Survey 2014-2018 5-Year Estimates.
 
 ```{r}
 # Read in CoC-level predictions from UPenn study provided by Dan Treglia
@@ -110,7 +125,7 @@ coc_df <- read_excel("data/CoCHomeless2019_formatted20200320.xlsx") %>% clean_na
   select (-(co_c_number_and_name))%>%
   mutate(total_new_shelter_beds_required = as.integer(total_new_shelter_beds_required))
 
-# Read in estimated homeless rates from 2017 study by Glynn and Byrne
+# Read in estimated homeless rates from 2017 study by Glynn and Tom Byrne
 # More info at https://github.com/G-Lynn/Inflection/blob/master/CoC_Cluster.csv
 coc_cluster <- read_csv("data/CoC_Cluster.csv") %>% clean_names() %>%
   rename( coc_number = co_c_number,
@@ -128,7 +143,7 @@ pit_2019 <- read_csv("data/2019_pit.csv") %>% clean_names() %>%
           pit_count_from_2019 = total_homeless_2019) %>%
   select( coc_number, coc_category, pit_count_from_2019)
 
-#Read in 2019 CoC total populations calculated with Byrne's R program
+#Read in 2019 CoC total populations calculated with my update of Byrne's R program
 coc_2019 <- read_csv("data/coc_population_2019.csv")
 ```
 
@@ -154,7 +169,7 @@ coc_df <- coc_df %>%
 coc_df_2 <- coc_df %>%
   full_join(coc_cluster, by="coc_number") 
 
-# Join 2019 PIT count data to our data frame
+# Join 2019 PIT count data to our dataframe
 coc_df_3 <- coc_df_2 %>%
   full_join(pit_2019, by="coc_number") 
 
@@ -184,13 +199,13 @@ coc_df_3 %>% print
 
 ## Loading county-level data
 
-The University of Pennsylvania research team produced predictions of additional shelter beds needed to accommodate social distancing the single adult homeless population within each county. I used OCR to read them from the [end of this study](https://endhomelessness.org/wp-content/uploads/2020/03/COVID-paper_clean-636pm.pdf).
+The University of Pennsylvania research team produced predictions of additional shelter beds needed to accommodate social distancing the single adult homeless population within each county. I used optical character recognition to read them from the [end of this study](https://endhomelessness.org/wp-content/uploads/2020/03/COVID-paper_clean-636pm.pdf).
  
 Since their table lacks FIPS codes, I joined FIPS into their county-level predictions. 
 
 Then I loaded the primary care physician rate from 2020's [2020 County Health Rankings](https://www.countyhealthrankings.org/explore-health-rankings/rankings-data-documentation)) and county-level poverty data produced by the [2014-2018 American Community Survey](https://www.census.gov/programs-surveys/acs/). 
 
-The County Health Rankings are compiled by the Robert Wood Johnson Foundation and the University of Wisconsin Population Health Institute each year. Primary care physicians include practicing non-federal physicians (M.D.s and D.O.s) under age 75 specializing in general practice medicine, family medicine, internal medicine, and pediatrics. The 2020 rankings include the most recent figures (2017), and I chose the rate per 100,000 residents to account for counties without a single MD/DO.
+The County Health Rankings are compiled by the Robert Wood Johnson Foundation and the University of Wisconsin Population Health Institute each year. Primary care physicians include practicing non-federal physicians (M.D.s and D.O.s) under age 75 specializing in general practice medicine, family medicine, internal medicine, and pediatrics. The 2020 rankings include the most recent figures (2017), and I chose the rate per 100,000 residents to account for counties without a single doctor.
 
 Currently, poverty means a single person earns less than \$12,760 in a year. That figure increases about $4,480 for each dependent or child they provide for, according to the [U.S. Department of Health and Human Services](https://aspe.hhs.gov/2020-poverty-guidelines).
 
@@ -443,7 +458,7 @@ Now that we've established thresholds, we can filter our data for counties that 
 * Doctors per 100,000 residents <= 79
 * Additional shelter beds needed >=384
 
-The resulting data set contains 43 counties of highest concern. Visit the [ArcGIS map here](https://arcg.is/0Lfm1q) to visualize where they fall on the map. 
+The resulting dataset contains 43 counties of highest concern. Visit the [ArcGIS map here](https://arcg.is/0Lfm1q) to visualize where they fall on the map. 
 
 These counties of highest concern represent 14 states from Hawaii to New York, and include 10 rural counties, 13 suburban counties, 6 urban counties, and 18 of the 50 largest cities in the country. 
 
@@ -476,15 +491,90 @@ write.csv(all_edit_df, "output/Places to investigate.csv")
 all_edit_df %>% print
 ```
 
-## Categorizing our counties
+## Creating a vulnerability index 
+This code adds flags to the data to identify whether or not each county falls into the danger zones for each variable. It then tallies how many variables for which each county is susceptible to create a simple index as follows:
 
+0 = Not vulnerable in any variable
+1 = Vulnerable in one variable
+2 = Vulnerable in two variables
+3 = Vulnerable in three variables
+4 = Vulnerable in all four variables
+
+The 43 counties of highest concern are those with a vulnerability index of 4.
+```{r}
+flags_df <- full_data %>%
+  rename( upenn_additional_bed_capacity_needed_in_cnty = additional_bed_capacity_needed,
+          upenn_number_of_infections_in_cnty = number_of_infections,
+          upenn_num_of_hospitalizations_in_cnty = num_of_hospitalizations,
+          upenn_num_of_critical_cases_in_cnty = num_of_critical_cases,
+          upenn_num_of_fatalities_in_cnty = num_of_fatalities,
+          upenn_cost_of_new_capacity_in_coc = cost_of_new_capacity,
+          total_new_shelter_beds_required_in_coc = total_new_shelter_beds_required,
+          county_pop_2018 = total_population,
+          est_coc_homeless_2019 = est_homeless_2019_scal) %>%
+  select (-c(coc_name_pit, in_2019_shapefile, in_2019_pit, n_cocs_in_county, n_counties_in_coc, mult_county_mult_coc, rel_type, pct_cnty_pop_coc, pct_cnty_pov_coc, people_in_poverty, people_in_poverty_moe, people_in_poverty_moe_pct, total_population_moe, total_population_moe_pct, NAME)) %>%
+  mutate( homeless1 = (if_else(est_coc_homeless_2019 >= .16, 1, 0, 0)),
+          poverty1 = (if_else(pct_in_poverty_in_cnty >= 10.89, 1, 0, 0)),
+          doctors1 = (if_else(primary_care_physicians_rate <= 80, 1, 0, 0)),
+          beds1 = (if_else(upenn_additional_bed_capacity_needed_in_cnty >= 384, 1, 0, 0)),
+          homeless = (if_else(est_coc_homeless_2019 >= .16, "Vulnerable", "OK", "OK")),
+          poverty = (if_else(pct_in_poverty_in_cnty >= 10.89, "Vulnerable", "OK", "OK")),
+          doctors = (if_else(primary_care_physicians_rate <= 80, "Vulnerable", "OK", "OK")),
+          beds = (if_else(upenn_additional_bed_capacity_needed_in_cnty >= 384, "Vulnerable", "OK", "OK")),
+          index = (homeless1 + poverty1 + doctors1 + beds1)
+          ) %>%
+  select (county_fips, state, county, coc_number, coc_name, coc_category, homeless, poverty, doctors, beds, index) %>%  
+  group_by(coc_number) %>%
+  arrange(state, county)  
+
+write.csv (flags_df, "output/vulnerability.csv")
+```
+
+Checking our counts of counties for how many are vulnerable in each variable. 
+```{r}
+#double check there are 43 counties
+flags_df %>%
+  group_by (state, county) %>%
+  filter (index == 4) %>%
+  summarize (count=n()) %>% 
+  print()
+```
+
+```{r}
+flags_df %>%
+  group_by (homeless) %>%
+  summarize (count=n()) %>% 
+  print()
+```
+
+```{r}
+flags_df %>%
+  group_by (poverty) %>%
+  summarize (count=n()) %>% 
+  print()
+```
+
+```{r}
+flags_df %>%
+  group_by (doctors) %>%
+  summarize (count=n()) %>% 
+  print()
+```
+
+```{r}
+flags_df %>%
+  group_by (beds) %>%
+  summarize (count=n()) %>% 
+  print()
+```
+
+This code tallies up the four categories of Continuums of Care we are tracking.
 ```{r}
 all_edit_df %>%
   group_by (coc_category) %>%
   summarize (count=n()) %>% 
   print()
 ```
-
 
 This final bit of code saves the data into a CSV to import into ArcGIS for data visualization.
 ```{r}
