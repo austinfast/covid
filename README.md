@@ -1,1 +1,3 @@
-# royhoward
+The Howard Center for Investigative Journalism at Arizona State University produced a multimedia investigation entitled COVID's Invisible Victims in summer 2020 to discover how COVID-19 has affected a particularly vulnerable population of Americans: homeless people. The resulting multipart series was published by over 180 newspapers, TV and radio stations and online news outlets as the Associated Press and USA Today picked up our coverage.
+
+This document shows how I combined multiple datasets and then narrowed down 3,142 counties to see which areas of the United States might have the most difficulty protecting their homeless populations. The 43 counties selected are most likely, based on analysis of their   homelessness rates per capita, poverty rates, ratio of primary care physicians to residents and number of additional shelter beds needed for social distancing.

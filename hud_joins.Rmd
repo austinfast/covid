@@ -1,7 +1,7 @@
 ---
 title: "COVID's Invisible Victims methodology"
 author: "Austin Fast"
-date: "8/24/2020"
+date: "Aug. 24, 2020"
 output: 
   html_document:
     toc: true
@@ -30,7 +30,7 @@ I then classified each variable to establish thresholds and filter out the count
 
 This classification enabled a vulnerability index for every county in the United States, ranging from 0 (not vulnerable for any of the four variables); 1 (vulnerable in any one variable); 2 (vulnerable for any two); 3 (vulnerable for any three) and 4 (vulnerable in all four). The counties fell largely along a normal distribution, with just 43 possessing a vulnerability index of 4.
 
-Even though 43 counties rose to the top, our list of "danger zones" to investigate contains 47 results because of how CoCs and county lines don’t always match up. For example, Phoenix’s CoC stretches into Pinal County, Arizona. Only the area of Pinal County within Phoenix’s CoC is of concern. Same for Washington’s Pierce County CoC, which contains a tiny amount of King County, perhaps due to an artifact from the R program that matched Census tracts to CoCs. Los Angeles County contains four CoCs, three of which land on this list, and Cleveland County, Oklahoma, contains two separate CoCs.
+Even though 43 counties rose to the top, our list of "danger zones" to investigate contains 47 results because of how CoCs and county lines don’t always match up. For example, Phoenix’s CoC stretches into Pinal County, Arizona. Only the area of Pinal County within Phoenix’s CoC is of concern. Same for Washington’s Pierce County CoC, which contains a tiny amount of King County, perhaps due to an artifact from the R program that matched census tracts to CoCs. Los Angeles County contains four CoCs, three of which land on this list, and Cleveland County, Oklahoma, contains two separate CoCs.
 
 Our eight-member team of journalists within the Howard Center then filed public records requests to governmental entities in those 43 counties and their major cities, including public health and human services departments and governing councils, to see how they prepared for and reacted to the threat of COVID-19. Public records requests also were made to those counties’ Continuums of Care, which are regional or local planning bodies that coordinate homeless assistance. The requests sought documents containing keywords, such as “homeless” and “COVID-19,” created from Jan. 1 to June 1, 2020.
 
@@ -52,7 +52,7 @@ Carnegie Mellon researchers, noting inconsistencies in counting cases and deaths
 knitr::include_graphics
 knitr::opts_chunk$set(warning = FALSE, message = FALSE)
 ```
-## Loading packages, storing Census key, defining functions
+## Loading packages, storing census key, defining functions
 ```{r}
 library (tidyverse)
 library (readxl)
@@ -301,7 +301,7 @@ full_data %>%
   print
 ```
 
-## Joining Census data
+## Joining census data
 
 I also joined in data from the 2013-2017 American Community Survey for additional demographic information on the counties we're examining.
 
@@ -462,7 +462,7 @@ The resulting dataset contains 43 counties of highest concern. Visit the [ArcGIS
 
 These counties of highest concern represent 14 states from Hawaii to New York, and include 10 rural counties, 13 suburban counties, 6 urban counties, and 18 of the 50 largest cities in the country. 
 
-There are 47 results because of how CoCs and county lines don't always match up. For example, Phoenix's CoC stretches into Pinal County. Only the area of Pinal County within Phoenix's CoC is of concern. Same for Washington's Pierce County CoC, which contains a tiny amount of King County, perhaps due to an artifact from the R program that matched Census tracts to CoCs. Los Angeles County contains four CoCs, three of which land on this list, and Cleveland County, Oklahoma, contains two CoCs. 
+There are 47 results because of how CoCs and county lines don't always match up. For example, Phoenix's CoC stretches into Pinal County. Only the area of Pinal County within Phoenix's CoC is of concern. Same for Washington's Pierce County CoC, which contains a tiny amount of King County, perhaps due to an artifact from the R program that matched census tracts to CoCs. Los Angeles County contains four CoCs, three of which land on this list, and Cleveland County, Oklahoma, contains two CoCs. 
 
 ```{r}
 all_edit_df <- full_data %>%
